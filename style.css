@@ -1,27 +1,30 @@
 :root {
+  --penguin-size: 300px;
   --penguin-skin: gray;
-  --penguin-belly: pink;
+  --penguin-belly: white;
   --penguin-beak: orange;
 }
 
-body {
-  background: var(--penguin-belly, #c6faf1);
+@media (max-width: 350px) {
+  :root {
+    --penguin-size: 200px;
+    --penguin-skin: black;
+  }
 }
 
 .penguin {
-  --penguin-belly: white;
   position: relative;
   margin: auto;
   display: block;
   margin-top: 5%;
-  width: 300px;
-  height: 300px;
+  width: var(--penguin-size, 300px);
+  height: var(--penguin-size, 300px);
 }
 
 .right-cheek {
   top: 15%;
   left: 35%;
-  background: var(--penguin-belly, pink);
+  background: var(--penguin-belly, white);
   width: 60%;
   height: 70%;
   border-radius: 70% 70% 60% 60%;
@@ -30,7 +33,7 @@ body {
 .left-cheek {
   top: 15%;
   left: 5%;
-  background: var(--penguin-belly, pink);
+  background: var(--penguin-belly, white);
   width: 60%;
   height: 70%;
   border-radius: 70% 70% 60% 60%;
@@ -39,7 +42,7 @@ body {
 .belly {
   top: 60%;
   left: 2.5%;
-  background: var(--penguin-belly, pink);
+  background: var(--penguin-belly, white);
   width: 95%;
   height: 100%;
   border-radius: 120% 120% 100% 100%;
@@ -64,14 +67,34 @@ body {
 }
 
 .right-hand {
-  top: 0%;
-  left: -5%;
-  background: var(--penguin-skin, gray);
+  top: 5%;
+  left: 25%;
+  background: var(--penguin-skin, black);
   width: 30%;
   height: 60%;
   border-radius: 30% 30% 120% 30%;
-  transform: rotate(45deg);
+  transform: rotate(130deg);
   z-index: -1;
+  animation-duration: 3s;
+  animation-name: wave;
+  animation-iteration-count: infinite;
+  transform-origin: 0% 0%;
+  animation-timing-function: linear;
+}
+
+@keyframes wave {
+  10% {
+    transform: rotate(110deg);
+  }
+  20% {
+    transform: rotate(130deg);
+  }
+  30% {
+    transform: rotate(110deg);
+  }
+  40% {
+    transform: rotate(130deg);
+  }
 }
 
 .left-hand {
@@ -127,10 +150,10 @@ body {
 
 .sparkle {
   top: 25%;
-  left: 15%;
+  left: -23%;
   background: white;
-  width: 35%;
-  height: 35%;
+  width: 150%;
+  height: 100%;
   border-radius: 50%;
 }
 
@@ -168,6 +191,10 @@ body {
   width: 16%;
   height: 10%;
   border-radius: 50%;
+}
+
+body {
+  background: #c6faf1;
 }
 
 .penguin * {
